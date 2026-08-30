@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F2027,50:2C5364,100:1e3c72&height=220&section=header&text=Wazuh%20SOC%20Home%20Lab&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Security%20Operations%20Center%20%7C%20SIEM%20Monitoring%20%7C%20Threat%20Detection&descAlignY=58&descSize=18" alt="Wazuh SOC Home Lab banner"/>
+  <img src="assets/banner-circuit.svg" alt="Wazuh SOC Home Lab banner"/>
 </p>
 
 <p align="center">
@@ -104,14 +104,16 @@ The project will later be expanded with a **Kali Linux** virtual machine for aut
 ### Current Environment
 
 ```mermaid
-flowchart BT
-    subgraph EP["🖥️ Windows 10 Endpoint"]
-        WA["Wazuh Agent"]
-        WEL["Windows Event Logs"]
-    end
-    subgraph SRV["🛡️ Wazuh SOC Server — Ubuntu Server"]
+flowchart TD
+    L["🛡️ WAZUH SOC LAB"] --> SRV
+    subgraph SRV["Ubuntu SOC Server"]
+        direction TB
         WM["Wazuh Manager"]
+        WI["Wazuh Indexer"]
         WD["Wazuh Dashboard"]
+    end
+    subgraph EP["🖥️ Windows 10 VM"]
+        WA["Wazuh Agent"]
     end
     EP -- "Security Events" --> SRV
 ```
@@ -119,12 +121,12 @@ flowchart BT
 ### Future Authorized Security Testing Environment
 
 ```mermaid
-flowchart LR
-    K["🐉 Kali Linux VM<br/>Authorized Security Testing"] -- "Simulated Activity" --> W["🖥️ Windows 10 Endpoint<br/>Wazuh Agent · Event Generation"]
-    W -- "Security Events" --> S["🛡️ Wazuh SOC Server<br/>Detection & Investigation"]
+flowchart TD
+    K["🐉 Kali Linux VM<br/>Authorized Security Testing Only"] -- "Simulated Activity" --> W["🖥️ Windows Endpoint<br/>Wazuh Agent"]
+    W --> S["🛡️ Ubuntu SOC Server<br/>Wazuh Detection & Log Analysis"]
 ```
 
-> All simulated activity stays inside an isolated, authorized home-lab network. See [Disclaimer](#-disclaimer).
+> ⚠️ Kali Linux is **planned** for this lab and has not yet been deployed or used — this diagram represents the future authorized testing environment, not current activity. All simulated activity will stay inside an isolated, authorized home-lab network. See [Disclaimer](#-disclaimer).
 
 ---
 
@@ -132,7 +134,7 @@ flowchart LR
 
 | Technology | Role in the Lab |
 |---|---|
-| 🛡️ **Wazuh** | Core SIEM platform — manager, dashboard, agent |
+| 🛡️ **Wazuh** | Core SIEM platform — manager, indexer, dashboard, agent |
 | 🐧 **Ubuntu Server** | Host OS for the Wazuh SOC Server |
 | 🪟 **Windows 10** | Monitored endpoint generating security events |
 | 🔌 **Wazuh Agent** | Forwards Windows Event Logs to the manager |
@@ -151,6 +153,7 @@ Running on **Ubuntu Server**, the Wazuh SOC Server provides centralized security
 
 - Receiving endpoint logs
 - Processing security events
+- Storing and indexing security data (Wazuh Indexer)
 - Monitoring agents
 - Detecting suspicious activity
 - Generating alerts
@@ -235,6 +238,7 @@ agent.id:002 AND data.win.system.eventID:4624 AND data.win.eventdata.targetUserN
 - The investigated username was **`IEUser`**, source IP **`127.0.0.1`**
 - Activity appeared to originate locally from the endpoint
 - No immediate evidence of an external source was identified during the initial review
+- Multiple events from the same agent and IP do not, on their own, indicate malicious activity
 - This investigation was limited to currently available events — an **initial** analysis of authentication activity
 
 > Future attack simulations will allow more advanced detection and correlation exercises.
@@ -429,6 +433,9 @@ wazuh-soc-home-lab/
 │
 ├── README.md
 │
+├── assets/
+│   └── banner-circuit.svg
+│
 ├── screenshots/
 │   ├── wazuh-dashboard/
 │   ├── agent-status/
@@ -478,7 +485,7 @@ wazuh-soc-home-lab/
 
 This project is strictly for **educational purposes** and **authorized cybersecurity testing**.
 
-All security testing, simulations, and experiments are performed only inside a **controlled and isolated virtual lab environment**. No unauthorized systems, networks, accounts, or devices are targeted.
+All security testing, simulations, and experiments are performed only inside a **controlled and isolated virtual lab environment**. No unauthorized systems, networks, accounts, or devices are targeted. Kali Linux and all attack-simulation activity described in this README are **planned and not yet deployed**.
 
 ---
 
@@ -503,5 +510,5 @@ Building practical hands-on skills in Cybersecurity · SOC Operations · Wazuh �
 </p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1e3c72,50:2C5364,100:0F2027&height=120&section=footer" alt="footer"/>
+  <sub>Wazuh · SIEM · Windows Event Log Analysis · Blue Team Practice</sub>
 </p>
