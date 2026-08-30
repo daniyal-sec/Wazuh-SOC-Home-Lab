@@ -29,22 +29,21 @@
 
 ## 📑 Table of Contents
 
-- [📖 Overview](#-overview)
-- [🏗️ Lab Architecture](#-lab-architecture)
-- [🧰 Technologies Used](#-technologies-used)
-- [🧩 Lab Components](#-lab-components)
-- [🔍 Security Event Investigation](#-security-event-investigation)
-- [🧭 Investigation Methodology](#-investigation-methodology)
-- [🎓 SOC Skills Practiced](#-soc-skills-practiced)
-- [⚔️ Future Attack Simulation Plan](#-future-attack-simulation-plan)
-- [🚦 Future SOC Development](#-future-soc-development)
-- [🔄 Learning Methodology](#-learning-methodology)
-- [🗺️ Project Roadmap](#-project-roadmap)
-- [📁 Repository Structure](#-repository-structure)
-- [🎓 Learning Goals](#-learning-goals)
-- [⚠️ Disclaimer](#-disclaimer)
-- [👤 Author](#-author)
-
+- [📖 Overview](#overview)
+- [🏗️ Lab Architecture](#lab-architecture)
+- [🧰 Technologies Used](#technologies-used)
+- [🧩 Lab Components](#lab-components)
+- [🔍 Security Event Investigation](#security-event-investigation)
+- [🧭 Investigation Methodology](#investigation-methodology)
+- [🎓 SOC Skills Practiced](#soc-skills-practiced)
+- [⚔️ Future Attack Simulation Plan](#future-attack-simulation-plan)
+- [🚦 Future SOC Development](#future-soc-development)
+- [🔄 Learning Methodology](#learning-methodology)
+- [🗺️ Project Roadmap](#project-roadmap)
+- [📁 Repository Structure](#repository-structure)
+- [🎓 Learning Goals](#learning-goals)
+- [⚠️ Disclaimer](#disclaimer)
+- [👤 Author](#author)
 ---
 
 ## 📖 Overview
